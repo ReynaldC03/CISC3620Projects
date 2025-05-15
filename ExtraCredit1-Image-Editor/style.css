@@ -157,3 +157,24 @@
     color: #777;
     font-style: italic;
   }
+  .back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 16px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 100;
+    transition: background 0.2s;
+  }
+  
+  .back-button:hover {
+    background: #6a4df5;
+  }
