@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Sprite Editor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="editor-container">
+    <h1><i class="fas fa-film"></i> Sprite Animation Editor</h1>
+    
+    <div class="toolbar">
+      <label for="sprite-upload" class="btn">
+        <i class="fas fa-upload"></i> Load Sprite Sheet
+      </label>
+      <input type="file" id="sprite-upload" accept="image/*">
+      <button id="show-sheet-btn" class="btn" title="Show Sprite Sheet">
+        <i class="fas fa-layer-group"></i> Show Sheet
+      </button>
+      <div class="animation-controls">
+        <button id="play-btn" class="btn" title="Play">
+          <i class="fas fa-play"></i>
+        </button>
+        <button id="pause-btn" class="btn hidden" title="Pause">
+          <i class="fas fa-pause"></i>
+        </button>
+        <button id="stop-btn" class="btn" title="Stop">
+          <i class="fas fa-stop"></i>
+        </button>
+        <button id="prev-frame-btn" class="btn" title="Previous Frame">
+          <i class="fas fa-step-backward"></i>
+        </button>
+        <button id="next-frame-btn" class="btn" title="Next Frame">
+          <i class="fas fa-step-forward"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="main-content">
+      <div class="canvas-container">
+        <canvas id="animation-canvas"></canvas>
+        <div class="frame-indicator">
+          Frame: <span id="current-frame">0</span>/<span id="total-frames">0</span>
+        </div>
+      </div>
+      
+      <div class="animation-panel">
+        <div class="animation-list">
+          <h3><i class="fas fa-list"></i> Animations</h3>
+          <ul id="animations-list">
+            <li class="active" data-animation="idle">Idle</li>
+            <li data-animation="run">Run</li>
+            <li data-animation="jump">Jump</li>
+          </ul>
+          <button id="add-animation-btn" class="btn small">
+            <i class="fas fa-plus"></i> Add Animation
+          </button>
+        </div>
+        
+        <div class="animation-settings">
+          <h3><i class="fas fa-cog"></i> Animation Settings</h3>
+          <div class="control-group">
+            <label for="animation-name"><i class="fas fa-tag"></i> Name</label>
+            <input type="text" id="animation-name" value="idle">
+          </div>
+          <div class="control-group">
+            <label for="start-frame"><i class="fas fa-flag"></i> Start Frame</label>
+            <input type="number" id="start-frame" min="0" value="0">
+          </div>
+          <div class="control-group">
+            <label for="end-frame"><i class="fas fa-flag-checkered"></i> End Frame</label>
+            <input type="number" id="end-frame" min="1" value="3">
+          </div>
+          <div class="control-group">
+            <label for="frame-rate"><i class="fas fa-tachometer-alt"></i> Frame Rate (FPS)</label>
+            <input type="number" id="frame-rate" min="1" max="60" value="12">
+          </div>
+          <div class="control-group">
+            <label for="loop-animation">
+              <input type="checkbox" id="loop-animation" checked>
+              <i class="fas fa-redo"></i> Loop Animation
+            </label>
+          </div>
+          <button id="save-animation-btn" class="btn">
+            <i class="fas fa-save"></i> Save Animation
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="sprite-settings">
+      <h3><i class="fas fa-sliders-h"></i> Sprite Settings</h3>
+      <div class="controls-grid">
+        <div class="control-group">
+          <label for="frame-width"><i class="fas fa-arrows-alt-h"></i> Frame Width</label>
+          <input type="number" id="frame-width" min="1" value="64">
+        </div>
+        <div class="control-group">
+          <label for="frame-height"><i class="fas fa-arrows-alt-v"></i> Frame Height</label>
+          <input type="number" id="frame-height" min="1" value="64">
+        </div>
+        <div class="control-group">
+          <label for="sprite-scale"><i class="fas fa-expand"></i> Display Scale</label>
+          <input type="number" id="sprite-scale" min="1" max="10" value="2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sheet-container" class="hidden">
+    <canvas id="sheet-canvas"></canvas>
+    <div class="sheet-controls">
+      <button id="close-sheet-btn" class="btn small">
+        <i class="fas fa-times"></i> Close
+      </button>
+      <span>Click and drag to select frame</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
